@@ -22,8 +22,7 @@ jobs:
     steps:
       - name: PrintVars
         run: |
-          Write-Host "Var1: ${{ env.var1 }} Event: ${{github.event.type}}"
-          Write-Output "Output Var1: ${{ env.var1 }} Event: ${{github.event.type}}"
+          Write-Output "Output Var1: ${{ env.var1 }} Event: ${{github.event.type}} Another: ${{github.event_name}}"
 
 
 
