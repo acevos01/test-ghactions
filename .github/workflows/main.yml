@@ -14,7 +14,7 @@ on:
     types: [web]
 
 env:
-  var1: ${{github.event.type == 'hi' && github.event.client_payload.var1 || github.event.inputs.var1 }}
+  var1: ${{github.event_name == 'workflow_dispatch' && github.event.inputs.var1 || github.event.client_payload.var1 }}
 
 jobs:
   dumpVars:
@@ -22,7 +22,7 @@ jobs:
     steps:
       - name: PrintVars
         run: |
-          Write-Output "Output Var1: ${{ env.var1 }} Event: ${{github.event.type}} Another: ${{github.event_name}}"
+          Write-Output "Output Var1: ${{ env.var1 }} Event: ${{github.event_name}}"
 
 
 
