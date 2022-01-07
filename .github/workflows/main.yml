@@ -1,0 +1,31 @@
+name: Testing
+on:
+  workflow_dispatch:
+    inputs:
+      var1:
+        type: string
+        description: "var1"
+        required: true
+      var2:
+        type: string
+        description: "var2"
+        required: false
+  repository_dispatch:
+    types: [web]
+
+env:
+  var1: ${{github.event.type == 'hi' && github.event.client_payload.var1 || github.event.inputs.var1 }}
+
+jobs:
+  dumpVars:
+    runs-on: [windows-latest]
+    steps:
+      - name: PrintVars
+        run: |
+          Write-Host "Var1: ${{ env.var1 }} Event: ${{github.event.type}}"
+          Write-Output "Output Var1: ${{ env.var1 }} Event: ${{github.event.type}}"
+
+
+
+
+
