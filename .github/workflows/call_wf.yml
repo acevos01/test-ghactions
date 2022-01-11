@@ -19,8 +19,8 @@ jobs:
   call-template:
     uses: acevos01/test-ghactions/.github/workflows/reusable_template.yml@main
     with:
-      var1: inputs.var1
-      var2: env.var2
+      var1: ${{ inputs.var1 }}
+      var2: ${{ env.var2 }}
 
        
 
