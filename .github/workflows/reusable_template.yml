@@ -1,0 +1,30 @@
+name: Template
+on:
+  workflow_call:
+    inputs:
+      var1:
+        type: string
+        description: "var1"
+        required: true
+      var2:
+        type: string
+        description: "var2"
+        required: false
+
+env:
+  var1: ${{ inputs.var1 }}
+  var2: ${{ inputs.var2 }}
+
+jobs:
+  dumpVars:
+    runs-on: [windows-latest]
+    steps:
+      - name: PrintVars
+        run: |
+          Write-Output "Output Var1: ${{ env.var1 }} Event: ${{github.event_name}}"
+          Write-Output "Output Var2: ${{ env.var2 }} Event: ${{github.event_name}}"
+
+
+
+
+
