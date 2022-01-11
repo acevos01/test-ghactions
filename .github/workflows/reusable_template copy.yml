@@ -1,4 +1,4 @@
-name: Template
+name: Calling wf
 on:
   workflow_dispatch:
     inputs:
