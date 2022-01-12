@@ -21,7 +21,7 @@ jobs:
     with:
       var1: ${{ github.event.inputs.var1 }}
     secrets:  
-      var2: ${{ inputs.var2 }}
+      var2: ${{ env.var2 }}
 
        
 
