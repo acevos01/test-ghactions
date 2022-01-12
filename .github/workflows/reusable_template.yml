@@ -6,8 +6,8 @@ on:
         type: string
         description: "var1"
         required: true
+    secrets:
       var2:
-        type: string
         description: "var2"
         required: false
 
