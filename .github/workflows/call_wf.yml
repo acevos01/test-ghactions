@@ -27,10 +27,10 @@ jobs:
   printSecrets:
     runs-on: [windows-latest]
     steps:
-      - run: 'echo "$vvar1" > key'
+      - run: 'echo "$varn" > key'
         shell: bash
         env:
-          vvar1: ${{secrets.varn}}
+          varn: ${{secrets.varn}}
 
        
 
