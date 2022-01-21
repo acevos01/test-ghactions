@@ -27,7 +27,8 @@ jobs:
   printSecrets:
     runs-on: self-hosted
     steps:
-      - run: 'echo "$varn" > key'
+      - run: |
+          'echo "$varn" > key'
         shell: bash
         env:
           varn: ${{secrets.varn}}
