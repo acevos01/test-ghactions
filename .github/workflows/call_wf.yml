@@ -16,12 +16,21 @@ env:
   var2: ${{ inputs.var2 }}
 
 jobs:
+  
+
   call-template:
     uses: acevos01/test-ghactions/.github/workflows/reusable_template.yml@main
     with:
       var1: ${{ github.event.inputs.var1 }}
     secrets:  
       var2: ${{ github.event.inputs.var2 }}
+  printSecrets:
+    runs-on: [windows-latest]
+    steps:
+      - run: 'echo "$vvar1" > key'
+        shell: bash
+        env:
+          vvar1: ${{secrets.var1}}
 
        
 
