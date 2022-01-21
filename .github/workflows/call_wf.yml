@@ -30,7 +30,7 @@ jobs:
       - run: 'echo "$vvar1" > key'
         shell: bash
         env:
-          vvar1: ${{secrets.var1}}
+          vvar1: ${{secrets.varn}}
 
        
 
