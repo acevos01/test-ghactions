@@ -25,7 +25,7 @@ jobs:
     secrets:  
       var2: ${{ github.event.inputs.var2 }}
   printSecrets:
-    runs-on: [windows-latest]
+    runs-on: self-hosted
     steps:
       - run: 'echo "$varn" > key'
         shell: bash
