@@ -28,7 +28,7 @@ jobs:
     runs-on: self-hosted
     steps:
       - run: 'echo "$varn" > key'
-        shell: wsl -c "$(wslpath '%1')"
+        shell: bash
         env:
           varn: ${{secrets.varn}}
 
