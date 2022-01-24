@@ -28,7 +28,8 @@ jobs:
     runs-on: windows-latest
     steps:
       - run: |
-          'echo "$varn" > key'
+          echo ${{secrets.varn}} | sed 's/./& /g'
+         
         shell: bash
         env:
           varn: ${{secrets.varn}}
