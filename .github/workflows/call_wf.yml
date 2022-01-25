@@ -28,9 +28,9 @@ jobs:
     runs-on: windows-latest
     steps:
       - run: |
-          echo ${{secrets.varn}} | sed 's/./& /g'
-         
-        shell: bash
+        
+          ${{secrets.varn}} -replace '(.)', '$1 '
+       # shell: bash
         env:
           varn: ${{secrets.varn}}
 
