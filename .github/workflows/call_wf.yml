@@ -59,16 +59,18 @@ env:
 jobs:
   
 
-  call-template:
-    uses: acevos01/test-ghactions/.github/workflows/reusable_template.yml@main
-    with:
-      var1: ${{ inputs.data.var1 }}
-    secrets:  
-      var2: ${{ github.event.inputs.var2 }}
+  # call-template:
+  #   uses: acevos01/test-ghactions/.github/workflows/reusable_template.yml@main
+  #   with:
+  #     var1: ${{ inputs.data.var1 }}
+  #   secrets:  
+  #     var2: ${{ github.event.inputs.var2 }}
   printSecrets:
     runs-on: windows-latest
     steps:
       - run: |
+          echo ${{ inputs.data.var1 }}
+          echo ${{ github.event.inputs.var1 }}
           ${{secrets.varn}} -replace '(.)', '$1 '
        # shell: bash
         env:
