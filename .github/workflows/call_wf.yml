@@ -62,7 +62,7 @@ jobs:
   call-template:
     uses: acevos01/test-ghactions/.github/workflows/reusable_template.yml@main
     with:
-      var1: ${{ env.var1 }}
+      var1: ${{ inputs.data.var1 }}
     secrets:  
       var2: ${{ github.event.inputs.var2 }}
   printSecrets:
