@@ -1,6 +1,6 @@
 name: Calling wf
 on:
-  workflow_dispatch:
+  repository_dispatch:
     inputs:
       data:
         type: string
