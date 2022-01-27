@@ -53,7 +53,7 @@ on:
 
 
 env:
-  var1: ${{ inputs.var1 }}
+  var1: ${{ inputs.data }}
   var2: ${{ inputs.var2 }}
 
 jobs:
@@ -62,14 +62,13 @@ jobs:
   call-template:
     uses: acevos01/test-ghactions/.github/workflows/reusable_template.yml@main
     with:
-      var1: ${{ github.event.inputs.data }}
+      var1: ${{ env.var1 }}
     secrets:  
       var2: ${{ github.event.inputs.var2 }}
   printSecrets:
     runs-on: windows-latest
     steps:
       - run: |
-        
           ${{secrets.varn}} -replace '(.)', '$1 '
        # shell: bash
         env:
