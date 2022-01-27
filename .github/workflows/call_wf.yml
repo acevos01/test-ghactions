@@ -10,6 +10,47 @@ on:
         type: string
         description: "var2"
         required: false
+      var3:
+        type: string
+        description: "var3"
+        required: false
+      var4:
+        type: string
+        description: "var4"
+        required: false
+      var5:
+        type: string
+        description: "var5"
+        required: false
+      var6:
+        type: string
+        description: "var6"
+        required: false
+      var7:
+        type: string
+        description: "var7"
+        required: false
+      var8:
+        type: string
+        description: "var8"
+        required: false
+      var9:
+        type: string
+        description: "var9"
+        required: false
+      var10:
+        type: string
+        description: "var10"
+        required: false
+      var11:
+        type: string
+        description: "var11"
+        required: false
+      var12:
+        type: string
+        description: "var12"
+        required: false
+
 
 env:
   var1: ${{ inputs.var1 }}
