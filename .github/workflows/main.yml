@@ -30,18 +30,20 @@ jobs:
       - windows
       - x64
       - ${{ github.event.inputs.Env }}
+    
     steps:
       - name: PrintVars
         run: |
           Write-Output "pc=$(hostname)" >> $env:GITHUB_ENV
           Write-Output "Output Var1: ${{ env.var1 }} Event: ${{github.event_name}}"
-
+          echo ::set-output name=runner::$(hostname)
   download-file-github:
+    needs: dumpVars
     runs-on: 
       - self-hosted
       - windows
       - x64
-      - ${{ env.pc }}
+      - ${{ needs.dumpVars.output.runner }}
     steps:
       - run: |
             Invoke-WebRequest -Uri https://github.com/psf/black/archive/refs/heads/main.zip -OutFile psf-black.zip
