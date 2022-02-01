@@ -38,7 +38,7 @@ jobs:
         run: |
           Write-Output "pc=$(hostname)" >> $env:GITHUB_ENV
           Write-Output "Output Var1: ${{ env.var1 }} Event: ${{github.event_name}}"
-          echo ::set-output name=runner::$(hostname)
+          Write-Output ::set-output name=runner::$(hostname)
   download-file-github:
     needs: dumpVars
     runs-on: 
