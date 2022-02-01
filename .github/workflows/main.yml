@@ -45,7 +45,7 @@ jobs:
       - self-hosted
       - windows
       - x64
-      - ${{ needs.dumpVars.output.runner }}
+      - ${{ needs.dumpVars.outputs.runner }}
     steps:
       - run: |
             Invoke-WebRequest -Uri https://github.com/psf/black/archive/refs/heads/main.zip -OutFile psf-black.zip
