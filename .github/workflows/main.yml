@@ -32,6 +32,7 @@ jobs:
       - ${{ github.event.inputs.Env }}
     outputs:
       runner: ${{ steps.get-runner.outputs.runner }}
+      
     steps:
       - name: PrintVars
         id: get-runner
@@ -39,6 +40,8 @@ jobs:
           Write-Output "pc=$(hostname)" >> $env:GITHUB_ENV
           Write-Output "Output Var1: ${{ env.var1 }} Event: ${{github.event_name}}"
           echo "::set-output name=runner::$(hostname)"
+      - name: Checkout
+        uses: actions/checkout@v2
       - name: Execute script in time
         run: | 
           .\mytestscript.ps1
