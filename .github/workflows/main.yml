@@ -41,7 +41,7 @@ jobs:
           echo "::set-output name=runner::$(hostname)"
       - name: Execute script in time
         run: | 
-          ./mytestscript.ps1
+          .\mytestscript.ps1
         
   # download-file-github:
   #   needs: dumpVars
