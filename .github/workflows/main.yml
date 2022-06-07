@@ -29,7 +29,8 @@ jobs:
       - self-hosted
       - windows
       - x64
-      - ${{ github.event.inputs.Env }}
+      - RIS-XBVB7TQNFUJ
+      # - ${{ github.event.inputs.Env }}
     outputs:
       runner: ${{ steps.get-runner.outputs.runner }}
       
