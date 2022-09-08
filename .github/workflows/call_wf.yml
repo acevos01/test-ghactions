@@ -17,7 +17,19 @@ env:
 
 jobs:
   
-
+  saveEnv:
+    name: Save env. variables
+    runs-on: windows-latest
+    steps:
+      - shell: powershell
+        run: |
+          $envVars = @{ var1 = $inputs.var1; var2 = $env.var2 }
+          $envVars | ConvertTo-Json | Out-File "env.json"
+      - name: Upload math result for job 1
+        uses: actions/upload-artifact@v3
+        with:
+          name: env-vars
+          path: env.json
   call-template:
     uses: acevos01/test-ghactions/.github/workflows/reusable_template.yml@main
     with:
