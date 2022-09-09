@@ -1,6 +1,6 @@
 $stopwatch =  [system.diagnostics.stopwatch]::StartNew()
 $counter = 0
-$timeout = new-timespan -Minutes 1 # 6h
+$timeout = new-timespan -Minutes 10
 while ($stopwatch.elapsed -lt $timeout)
 {
     $counter++;
