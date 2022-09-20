@@ -24,7 +24,7 @@ jobs:
       - shell: powershell
         run: |
           $envVars = @{ var1 = "${{ inputs.var1 }}"; var2 = "${{ env.var2 }}"; run_id = "${{ env.var3 }}" }
-          $envVars | ConvertTo-Json | Out-File "env.json"
+          $envVars | ConvertTo-Json | Out-File "env-vars-${{ env.var3 }}.json"
       - name: Upload math result for job 1
         uses: actions/upload-artifact@v3
         with:
