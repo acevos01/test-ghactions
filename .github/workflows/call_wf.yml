@@ -36,7 +36,7 @@ jobs:
                   $this.variable_type = $variable_type
               }
           }
-          $envVars = [TypedVariable]::new("var1", "${{ inputs.var1 }}", "env_var"), [TypedVariable]::new("var2", ""${{ inputs.var2 }}"", "env_var")
+          $envVars = [TypedVariable]::new("var1", "${{ inputs.var1 }}", "env_var"), [TypedVariable]::new("var2", ""${{ env.var2 }}"", "env_var")
           $envVars | ConvertTo-Json | Out-File "env-vars-${{ env.var3 }}.json"
       - name: Upload math result for job 1
         uses: actions/upload-artifact@v3
