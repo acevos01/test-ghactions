@@ -14,7 +14,7 @@ on:
 env:
   var1: ${{ inputs.var1 }}
   var2: ${{ inputs.var2 }}
-  var3: context.payload.workflow_run.id 
+  var3: ${{ github.run_id }}
 jobs:
   
   saveEnv:
