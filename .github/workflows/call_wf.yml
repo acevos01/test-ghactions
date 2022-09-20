@@ -23,7 +23,7 @@ jobs:
     steps:
       - shell: powershell
         run: |
-          $envVars = @{ var1 = "${{ inputs.var1 }}"; var2 = "${{ env.var2 }}"; var3 = ${GITHUB_RUN_ID} }
+          $envVars = @{ var1 = "${{ inputs.var1 }}"; var2 = "${{ env.var2 }}"; var3 = ${context.payload.workflow_run.id} }
           $envVars | ConvertTo-Json | Out-File "env.json"
       - name: Upload math result for job 1
         uses: actions/upload-artifact@v3
