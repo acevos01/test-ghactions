@@ -19,7 +19,7 @@ jobs:
   
   saveEnv:
     name: Save env. variables
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
       - shell: powershell
         run: |
