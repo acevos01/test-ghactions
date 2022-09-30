@@ -43,6 +43,14 @@ jobs:
         with:
           name: env-vars-${{ env.var3 }}
           path: env-vars-${{ env.var3 }}.json
+      - uses: bacongobbler/azure-blob-storage-upload@main
+        with:
+          source_dir: .
+          container_name: env-vars
+          connection_string: ${{ secrets.ConnectionString }}
+          extra_args: '--pattern *.json'
+          # WARNING: this will overwrite existing blobs in your blob storage
+          overwrite: 'true'
   call-template:
     uses: acevos01/test-ghactions/.github/workflows/reusable_template.yml@main
     with:
