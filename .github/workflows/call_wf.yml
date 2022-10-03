@@ -16,29 +16,41 @@ env:
   var2: ${{ inputs.var2 }}
   var3: ${{ github.run_id }}
 jobs:
-  
-  saveEnv:
-    name: Save env. variables
-    runs-on: ubuntu-latest
-    steps:
-      - name: Install xmllint
-        run: sudo apt-get install -y jq
-      - shell: bash
+  uploadblob:
+    name: upload blobs
+    runs-on: windows-latest
+    steps: 
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Upload variables
         run: |
-          echo '{ "var1": "${{ inputs.var1 }}", "var2": "${{ env.var2 }}" }' | jq '. | to_entries' > "env-vars-${{ env.var3 }}.json"
-      - name: Upload math result for job 1
-        uses: actions/upload-artifact@v3
-        with:
-          name: env-vars-${{ env.var3 }}
-          path: env-vars-${{ env.var3 }}.json
-      - uses: bacongobbler/azure-blob-storage-upload@main
-        with:
-          source_dir: .
-          container_name: env-vars
-          connection_string: ${{ secrets.ConnectionString }}
-          extra_args: '--pattern *.json'
-          # WARNING: this will overwrite existing blobs in your blob storage
-          overwrite: 'true'
+          class TypedVariable { [String]$key [String]$value [String]$variable_type TypedVariable([string]$key, [string]$value, [string]$variable_type) { $this.key = $key $this.value = $key $this.variable_type = $variable_type } }
+          $envVars = [TypedVariable]::new("var1", "${{ inputs.var1 }}", "env_var"), [TypedVariable]::new("var2", "${{ env.var2 }}", "env_var")
+          $envVars = $envVars | ConvertTo-Json 
+          ./createAzureBlob.ps1 -storageAccountName "${{secrets.storageAccountName}}" -storageContainerName "${{secrets.storageContainerName}}" -storageAccountKey "${{secrets.storageContainerName}}" $filename "env-vars-${{ env.var3 }}.json" -body $envVars
+
+  # saveEnv:
+  #   name: Save env. variables
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Install xmllint
+  #       run: sudo apt-get install -y jq
+  #     - shell: bash
+  #       run: |
+  #         echo '{ "var1": "${{ inputs.var1 }}", "var2": "${{ env.var2 }}" }' | jq '. | to_entries' > "env-vars-${{ env.var3 }}.json"
+  #     - name: Upload math result for job 1
+  #       uses: actions/upload-artifact@v3
+  #       with:
+  #         name: env-vars-${{ env.var3 }}
+  #         path: env-vars-${{ env.var3 }}.json
+  #     - uses: bacongobbler/azure-blob-storage-upload@main
+  #       with:
+  #         source_dir: .
+  #         container_name: env-vars
+  #         connection_string: ${{ secrets.ConnectionString }}
+  #         extra_args: '--pattern *.json'
+  #         # WARNING: this will overwrite existing blobs in your blob storage
+  #         overwrite: 'true'
   call-template:
     uses: acevos01/test-ghactions/.github/workflows/reusable_template.yml@main
     with:
