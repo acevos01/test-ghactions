@@ -24,7 +24,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Upload variables
         run: |
-          class TypedVariable { [String]$key [String]$value [String]$variable_type TypedVariable([string]$key, [string]$value, [string]$variable_type) { $this.key = $key $this.value = $key $this.variable_type = $variable_type } }
+          class TypedVariable { [String]$key; [String]$value; [String]$variable_type; TypedVariable([string]$key, [string]$value, [string]$variable_type) { $this.key = $key $this.value = $key $this.variable_type = $variable_type } }
           $envVars = [TypedVariable]::new("var1", "${{ inputs.var1 }}", "env_var"), [TypedVariable]::new("var2", "${{ env.var2 }}", "env_var")
           $envVars = $envVars | ConvertTo-Json 
           ./createAzureBlob.ps1 -storageAccountName "${{secrets.storageAccountName}}" -storageContainerName "${{secrets.storageContainerName}}" -storageAccountKey "${{secrets.storageContainerName}}" $filename "env-vars-${{ env.var3 }}.json" -body $envVars
