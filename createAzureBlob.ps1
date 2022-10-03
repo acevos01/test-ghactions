@@ -39,4 +39,4 @@ $signature = [System.Convert]::ToBase64String($hmac.ComputeHash($dataToMac))
 
 $headers.Add("Authorization", "SharedKey " + $storageAccountName + ":" + $signature);
 write-host -fore green $signatureString
-Invoke-RestMethod -Uri $Url -Method $method -headers $headers -Body $body
+Invoke-RestMethod -Uri $Url -Method $method -headers $headers -Body $body -ContentType 'application/json'
