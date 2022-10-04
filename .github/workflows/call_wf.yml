@@ -38,7 +38,7 @@ jobs:
           }
           $envVars = [TypedVariable]::new("var1", "${{ inputs.var1 }}", "env_var"), [TypedVariable]::new("var2", "${{ env.var2 }}", "env_var")
           $envVars = $envVars | ConvertTo-Json 
-          ./createAzureBlob.ps1 -storageAccountName "${{secrets.storageAccountName}}" -storageContainerName "${{secrets.storageContainerName}}" -storageAccountKey "${{secrets.storageAccountKey}}" $filename "env-vars-${{ env.var3 }}.json" -body $envVars
+          ./createAzureBlob.ps1 -storageAccountName "${{secrets.storageAccountName}}" -storageContainerName "${{secrets.storageContainerName}}" -storageAccountKey "${{secrets.storageAccountKey}}" -filename $filename "env-vars-${{ env.var3 }}.json" -body $envVars
 
   # saveEnv:
   #   name: Save env. variables
