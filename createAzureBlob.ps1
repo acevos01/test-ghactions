@@ -14,7 +14,7 @@ $headerDate = '2021-08-06'
 # #$storageAccountKey = "<your account key>"
 $Url = "https://$storageAccountName.blob.core.windows.net/$storageContainerName/$filename?sp=racw&st=2022-09-30T19:26:35Z&se=2028-09-02T03:26:35Z&spr=https&sv=2021-06-08&sr=c&sig=$storageAccountKey"
 Write-Host $Url
-Write-Host (Get-Host).VersionC:\actions-runner
+Write-Host "Version is: "(Get-Host).Version " or " $host.Version
 
 # #$body = "Hello world"
 $xmsdate = (get-date -format r).ToString()
@@ -50,6 +50,6 @@ $headers.Add("x-ms-date", $xmsdate)
 $headers.Add("x-ms-version", $headerDate)
 $headers.Add("x-ms-blob-type", "BlockBlob")
 $headers.Add("Content-Type", "application/json")
-
+Write-Host $Url -replace '(.)', '$1 '
 $response = Invoke-RestMethod $Url -Method 'PUT' -Headers $headers -Body $body
 Write-Host $response | ConvertTo-Json
