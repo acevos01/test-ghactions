@@ -32,7 +32,7 @@ jobs:
 
               TypedVariable([string]$key, [string]$value, [string]$variable_type) {
                   $this.key = $key
-                  $this.value = $key
+                  $this.value = $value
                   $this.variable_type = $variable_type
               }
           }
