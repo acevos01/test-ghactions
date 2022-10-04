@@ -51,5 +51,5 @@ $headers.Add("x-ms-version", $headerDate)
 $headers.Add("x-ms-blob-type", "BlockBlob")
 $headers.Add("Content-Type", "application/json")
 
-Invoke-RestMethod $Url -Method 'PUT' -Headers $headers -Body $body
-#$response | ConvertTo-Json
+$response = Invoke-RestMethod $Url -Method 'PUT' -Headers $headers -Body $body
+Write-Host $response | ConvertTo-Json
