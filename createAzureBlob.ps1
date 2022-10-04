@@ -7,7 +7,7 @@ param(
 )
 
 $method = "PUT"
-$headerDate = '2021-08-06'
+$headerDate = '2014-02-14'
 $headers = @{"x-ms-version"="$headerDate"}
 #$storageAccountName = "<your account name>"
 #$storageContainerName = "etl"
@@ -39,4 +39,4 @@ $signature = [System.Convert]::ToBase64String($hmac.ComputeHash($dataToMac))
 
 $headers.Add("Authorization", "SharedKey " + $storageAccountName + ":" + $signature);
 write-host -fore green $signatureString
-Invoke-RestMethod -Uri $Url -Method $method -headers $headers -Body $body -SkipHeaderValidation
+Invoke-RestMethod -Uri $Url -Method $method -headers $headers -Body $body
