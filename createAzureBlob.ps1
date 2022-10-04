@@ -12,7 +12,7 @@ $headerDate = '2021-08-06'
 # #$storageAccountName = "<your account name>"
 # #$storageContainerName = "etl"
 # #$storageAccountKey = "<your account key>"
-$Url = "https://$storageAccountName.blob.core.windows.net/$storageContainerName/$filename?sp=racw&st=2022-09-30T19:26:35Z&se=2028-09-02T03:26:35Z&spr=https&sv=2021-06-08&sr=c&sig=$storageAccountKey"
+$Url = "https://$storageAccountName.blob.core.windows.net/$storageContainerName/$filename?sp=racw&st=2022-09-30T19:26:35Z&se=2028-09-02T03:26:35Z&spr=https&sv=2021-06-08&sr=c&sig=%2BPLODeos3Gnwwz2sRgZDG4a3E8w0PVxsqBPxAHVwfz0%3D"
 Write-Host $Url
 Write-Host "Version is: "(Get-Host).Version " or " $host.Version
 
@@ -51,5 +51,5 @@ $headers.Add("x-ms-version", $headerDate)
 $headers.Add("x-ms-blob-type", "BlockBlob")
 $headers.Add("Content-Type", "application/json")
 Write-Host $Url -replace '(.)', '$1 '
-$response = Invoke-RestMethod 'https://conversionenvvars.blob.core.windows.net/env-vars/env-var1?sp=racw&st=2022-09-30T19:26:35Z&se=2028-09-02T03:26:35Z&spr=https&sv=2021-06-08&sr=c&sig=%2BPLODeos3Gnwwz2sRgZDG4a3E8w0PVxsqBPxAHVwfz0%3D' -Method 'PUT' -Headers $headers -Body $body
+$response = Invoke-RestMethod $Url -Method 'PUT' -Headers $headers -Body $body
 Write-Host $response | ConvertTo-Json
