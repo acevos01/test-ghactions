@@ -12,7 +12,7 @@ $headerDate = '2021-08-06'
 # #$storageAccountName = "<your account name>"
 # #$storageContainerName = "etl"
 # #$storageAccountKey = "<your account key>"
-$Url = "https://$storageAccountName.blob.core.windows.net/$storageContainerName/pepe.json?sp=racw&st=2022-09-30T19:26:35Z&se=2028-09-02T03:26:35Z&spr=https&sv=2021-06-08&sr=c&sig=%2BPLODeos3Gnwwz2sRgZDG4a3E8w0PVxsqBPxAHVwfz0%3D"
+$Url = "https://$storageAccountName.blob.core.windows.net/$storageContainerName/pepe.json?sp=racw&st=2022-09-30T19:26:35Z&se=2028-09-02T03:26:35Z&spr=https&sv=2021-06-08&sr=c&sig=$storageAccountKey"
 Write-Host $Url
 Write-Host "Filename is " $filename
 Write-Host "Version is: "(Get-Host).Version " or " $host.Version
