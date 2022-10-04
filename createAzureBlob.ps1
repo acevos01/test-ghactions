@@ -14,6 +14,7 @@ $headerDate = '2021-08-06'
 # #$storageAccountKey = "<your account key>"
 $Url = "https://$storageAccountName.blob.core.windows.net/$storageContainerName/$filename?sp=racw&st=2022-09-30T19:26:35Z&se=2028-09-02T03:26:35Z&spr=https&sv=2021-06-08&sr=c&sig=%2BPLODeos3Gnwwz2sRgZDG4a3E8w0PVxsqBPxAHVwfz0%3D"
 Write-Host $Url
+Write-Host $filename
 Write-Host "Version is: "(Get-Host).Version " or " $host.Version
 
 # #$body = "Hello world"
