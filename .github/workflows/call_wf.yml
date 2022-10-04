@@ -40,7 +40,7 @@ jobs:
           $envVars = $envVars | ConvertTo-Json 
           Write-Host $envVars
           $envVars = $envVars | ConvertTo-Json 
-          ./createAzureBlob.ps1 -storageAccountName "${{secrets.storageAccountName}}" -storageContainerName "${{secrets.storageContainerName}}" -storageAccountKey "${{secrets.storageAccountKey}}" $filename "env-vars-${{ env.var3 }}.json" -body "hello world"
+          ./createAzureBlob.ps1 -storageAccountName "${{secrets.storageAccountName}}" -storageContainerName "${{secrets.storageContainerName}}" -storageAccountKey "${{secrets.storageAccountKey}}" $filename "env-vars-${{ env.var3 }}.json" -body $envVars
 
   # saveEnv:
   #   name: Save env. variables

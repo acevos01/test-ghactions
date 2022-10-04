@@ -13,8 +13,12 @@ $headerDate = '2021-08-06'
 # #$storageContainerName = "etl"
 # #$storageAccountKey = "<your account key>"
 $Url = "https://$storageAccountName.blob.core.windows.net/$storageContainerName/$filename?sp=racw&st=2022-09-30T19:26:35Z&se=2028-09-02T03:26:35Z&spr=https&sv=2021-06-08&sr=c&sig=$storageAccountKey"
+Write-Host $Url
+Write-Host (Get-Host).VersionC:\actions-runner
+
 # #$body = "Hello world"
 $xmsdate = (get-date -format r).ToString()
+Write-Host "Date is: " $xmsdate
 # $headers.Add("x-ms-date",$xmsdate)
 # $bytes = ([System.Text.Encoding]::UTF8.GetBytes($body))
 # $contentLength = $bytes.length
