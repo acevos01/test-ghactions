@@ -45,7 +45,6 @@ jobs:
         with:
           connection-string: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
           container: env-vars
-          name: env-artifact
           path: env-vars-${{ env.var3 }}.json
   # saveEnv:
   #   name: Save env. variables
