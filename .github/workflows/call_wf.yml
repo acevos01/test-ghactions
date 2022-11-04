@@ -39,8 +39,14 @@ jobs:
           $envVars = [TypedVariable]::new("var1", "${{ inputs.var1 }}", "env_var"), [TypedVariable]::new("var2", "${{ env.var2 }}", "env_var")
           $envVars = $envVars | ConvertTo-Json
           $filename = "env-vars-${{ env.var3 }}.json" 
-          ./createAzureBlob.ps1 -storageAccountName "${{secrets.storageAccountName}}" -storageContainerName "${{secrets.storageContainerName}}" -blobSAStoken "${{secrets.blobSAStoken}}" -filename $filename -body $envVars
-
+          $envVars | ConvertTo-Json | Out-File -FilePath $filename
+      - name: Upload environment variables
+        uses: fixpoint/azblob-upload-artifact@v4
+        if: env.uploadEnvVariables == 'True'
+        with:
+          connection-string: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
+          name: env-artifact
+          path: env-vars-${{ env.var3 }}.json
   # saveEnv:
   #   name: Save env. variables
   #   runs-on: ubuntu-latest
