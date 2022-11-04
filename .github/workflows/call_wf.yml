@@ -42,7 +42,6 @@ jobs:
           $envVars | ConvertTo-Json | Out-File -FilePath $filename
       - name: Upload environment variables
         uses: fixpoint/azblob-upload-artifact@v4
-        if: env.uploadEnvVariables == 'True'
         with:
           connection-string: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
           name: env-artifact
