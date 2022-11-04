@@ -44,7 +44,8 @@ jobs:
         uses: fixpoint/azblob-upload-artifact@v4
         with:
           connection-string: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
-          name: env-vars
+          container: env-vars
+          name: data
           path: env-vars-${{ env.var3 }}.json
   # saveEnv:
   #   name: Save env. variables
